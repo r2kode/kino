@@ -1,1 +1,1 @@
-export { SearchMovie } from './SearchMovie';
+export { SearchMovie } from './view/SearchMovie';
