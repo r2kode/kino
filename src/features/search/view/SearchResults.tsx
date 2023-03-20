@@ -1,11 +1,7 @@
-import {
-  Paper,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from '@mui/material';
+import { Link } from 'react-router-dom';
+import { Paper, List, ListItem, ListItemText } from '@mui/material';
 import { Movie } from '@/types/movie';
+import { RoutePaths } from '@/router';
 
 type SearchResultsProps = {
   movieList: Movie[];
@@ -17,9 +13,9 @@ export function SearchResults({ movieList }: SearchResultsProps) {
       {movieList.map(({ id, title }) => (
         <List key={id}>
           <ListItem disablePadding>
-            <ListItemButton component="a" href={`#${id}`}>
+            <Link to={`${RoutePaths.DETAILS}/${id}`}>
               <ListItemText primary={title} />
-            </ListItemButton>
+            </Link>
           </ListItem>
         </List>
       ))}

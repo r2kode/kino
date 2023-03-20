@@ -9,9 +9,12 @@ export const moviesApi = createApi({
   endpoints: (build) => ({
     searchMovie: build.query({
       query: (title) => `Search/${API_KEY}/${title}`,
-      // providesTags: []
+      providesTags: ['Movie'],
+    }),
+    getMovieDetails: build.query({
+      query: (id) => `Title/${API_KEY}/${id}`,
     }),
   }),
 });
 
-export const { useSearchMovieQuery } = moviesApi;
+export const { useSearchMovieQuery, useGetMovieDetailsQuery } = moviesApi;
