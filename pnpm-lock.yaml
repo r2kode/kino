@@ -13,6 +13,7 @@ specifiers:
   '@testing-library/react': ^14.0.0
   '@testing-library/react-hooks': ^8.0.1
   '@testing-library/user-event': ^14.4.3
+  '@types/mui-image': ^1.0.1
   '@types/react': 18.0.27
   '@types/react-dom': 18.0.10
   '@types/testing-library__jest-dom': ^5.14.5
@@ -26,6 +27,7 @@ specifiers:
   husky: 8.0.3
   jsdom: ^21.1.0
   lint-staged: ^13.1.2
+  mui-image: ^1.0.7
   prettier: ^2.8.4
   react: 18.2.0
   react-dom: 18.2.0
@@ -41,6 +43,8 @@ dependencies:
   '@mui/icons-material': 5.11.11_lsrgyqu67nq7kkwrq2olzxvao4
   '@mui/material': 5.11.13_yxvt43keouwjyeqzti2jjtf4mu
   '@reduxjs/toolkit': 1.9.3_k4ae6lp43ej6mezo3ztvx6pykq
+  '@types/mui-image': 1.0.1
+  mui-image: 1.0.7_4lpce6f7xhwidsmjxgxfr3zg54
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
   react-redux: 8.0.5_fxtgt6bjwd6p4cwoordejim2zi
@@ -1283,6 +1287,12 @@ packages:
   /@types/minimist/1.2.2:
     resolution: {integrity: sha512-jhuKLIRrhvCPLqwPcx6INqmKeiA5EWrsCOPhrlFSrbrmU4ZMPjj5Ul/oLCMDO98XRUIwVm78xICz4EPCektzeQ==}
     dev: true
+
+  /@types/mui-image/1.0.1:
+    resolution: {integrity: sha512-HE+irW/EbADq6LrObWQIzpYu7sFHcTZTzp0K4JuKp2IUYGTkQhw2cVsJP2tk5h26Ex/MzDAMOXtmw71Z3SOTaQ==}
+    dependencies:
+      '@types/react': 18.0.28
+    dev: false
 
   /@types/node/18.14.6:
     resolution: {integrity: sha512-93+VvleD3mXwlLI/xASjw0FzKcwzl3OdTCzm1LaRfqgS21gfFtK3zDXM5Op9TeeMsJVOaJ2VRDpT9q4Y3d0AvA==}
@@ -3637,6 +3647,21 @@ packages:
   /ms/2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
+
+  /mui-image/1.0.7_4lpce6f7xhwidsmjxgxfr3zg54:
+    resolution: {integrity: sha512-U79TWMKMfMC1ZiGnv/M+SaVJeUpubEjXOdy7w53RsvidUAMZ+4nW+QmDG9yg5fgWeYy6YJgLHyI9BHSDw76iIg==}
+    peerDependencies:
+      '@emotion/react': ^11.4.1
+      '@emotion/styled': ^11.3.0
+      '@mui/material': ^5.0.1
+      prop-types: ^15.7.2
+      react: ^17.0.2 || ^18.0.0
+    dependencies:
+      '@emotion/react': 11.10.6_3stiutgnnbnfnf3uowm5cip22i
+      '@emotion/styled': 11.10.6_zjrrpqmb4rf5frur5mrydkybnq
+      '@mui/material': 5.11.13_yxvt43keouwjyeqzti2jjtf4mu
+      react: 18.2.0
+    dev: false
 
   /nanoid/3.3.4:
     resolution: {integrity: sha512-MqBkQh/OHTS2egovRtLk45wEyNXwF+cokD+1YPf9u5VfJiRdAiRwB2froX5Co9Rh20xs4siNPm8naNotSD6RBw==}
