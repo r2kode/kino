@@ -1,16 +1,24 @@
 import { Link } from 'react-router-dom';
-import { Paper, List, ListItem, ListItemText } from '@mui/material';
+import { Paper, Typography, List, ListItem, ListItemText } from '@mui/material';
+import { useSearchMovieQuery } from '@/app/services/movies';
 import { Movie } from '@/types/movie';
 import { RoutePaths } from '@/router';
 
 type SearchResultsProps = {
-  movieList: Movie[];
+  searchPhrase: string;
 };
 
-export function SearchResults({ movieList }: SearchResultsProps) {
+export function SearchResults({ searchPhrase }: SearchResultsProps) {
+  const { data, isLoading } = useSearchMovieQuery(searchPhrase);
+
+  if (isLoading) return <div>Loading..</div>;
+
+  const { results, expression } = data;
+
   return (
     <Paper>
-      {movieList.map(({ id, title }) => (
+      <Typography variant="h2">{expression}</Typography>
+      {results.map(({ id, title }: Movie) => (
         <List key={id}>
           <ListItem disablePadding>
             <Link to={`${RoutePaths.DETAILS}/${id}`}>
