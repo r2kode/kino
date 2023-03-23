@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Paper, Typography, List, ListItem, ListItemText } from '@mui/material';
 import { useSearchMovieQuery } from '@/app/services/movies';
-import { Movie } from '@/types/movie';
+import { Movie, MovieResponse } from '@/types/movie';
 import { RoutePaths } from '@/router';
 
 type SearchResultsProps = {
@@ -13,7 +13,7 @@ export function SearchResults({ searchPhrase }: SearchResultsProps) {
 
   if (isLoading) return <div>Loading..</div>;
 
-  const { results, expression } = data;
+  const { results, expression } = data as MovieResponse;
 
   return (
     <Paper>
