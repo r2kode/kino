@@ -1,7 +1,5 @@
 import { useState } from 'react';
-import Paper from '@mui/material/Paper';
-import InputBase from '@mui/material/InputBase';
-import IconButton from '@mui/material/IconButton';
+import { Box, InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
 type SearchInputProps = {
@@ -12,14 +10,14 @@ export function SearchInput({ handleSearch }: SearchInputProps) {
   const [searchInput, setSearchInput] = useState('');
 
   return (
-    <Paper
+    <Box
       component="form"
       sx={{
+        bgcolor: '#fff',
         p: '2px 4px',
         mb: 4,
         display: 'flex',
         alignItems: 'center',
-        width: 600,
       }}
     >
       <InputBase
@@ -36,6 +34,6 @@ export function SearchInput({ handleSearch }: SearchInputProps) {
       >
         <SearchIcon />
       </IconButton>
-    </Paper>
+    </Box>
   );
 }

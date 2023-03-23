@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Paper, Typography, List, ListItem, ListItemText } from '@mui/material';
+import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
 import { useSearchMovieQuery } from '@/app/services/movies';
 import { Movie, MovieResponse } from '@/types/movie';
 import { RoutePaths } from '@/router';
@@ -16,8 +16,10 @@ export function SearchResults({ searchPhrase }: SearchResultsProps) {
   const { results, expression } = data as MovieResponse;
 
   return (
-    <Paper>
-      <Typography variant="h2">{expression}</Typography>
+    <Box sx={{ bgcolor: '#fff', px: 2 }}>
+      <Typography variant="h6" sx={{ color: '#222' }}>
+        {expression}
+      </Typography>
       {results.map(({ id, title }: Movie) => (
         <List key={id}>
           <ListItem disablePadding>
@@ -27,6 +29,6 @@ export function SearchResults({ searchPhrase }: SearchResultsProps) {
           </ListItem>
         </List>
       ))}
-    </Paper>
+    </Box>
   );
 }

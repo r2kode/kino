@@ -6,11 +6,9 @@ export function SearchMovie() {
   const [searchPhrase, setSearchPhrase] = useState<null | string>(null);
 
   return (
-    <div>
+    <>
       <SearchInput handleSearch={setSearchPhrase} />
-      <div>
-        {searchPhrase ? <SearchResults searchPhrase={searchPhrase} /> : null}
-      </div>
-    </div>
+      {searchPhrase ? <SearchResults searchPhrase={searchPhrase} /> : null}
+    </>
   );
 }
