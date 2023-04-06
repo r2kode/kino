@@ -39,7 +39,7 @@ export function MobileMenu() {
       >
         {navItems.map(({ path, label }) => (
           <MenuItem key={path} onClick={handleCloseNavMenu}>
-            <NavLink to={path}>
+            <NavLink to={path as string}>
               <Typography textAlign="center" sx={{ color: '#505050' }}>
                 {label}
               </Typography>

@@ -8,7 +8,7 @@ export function DesktopMenu() {
       {navItems.map(({ path, label }) => (
         <NavLink
           key={path}
-          to={path}
+          to={path as string}
           style={({ isActive }) => ({
             color: '#fff',
             textDecoration: isActive ? 'underline' : 'none',
