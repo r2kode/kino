@@ -28,14 +28,12 @@ export function MovieDetails({ id }: MovieDetailsProps) {
       </Grid>
       <Grid md={7}>
         <Typography variant="body1">
-          <div>
-            <p>{year}</p>
-            <p>{type}</p>
-            <p>{stars}</p>
-            <p>{genres}</p>
-            <p>{plot}</p>
-            <p>{countries}</p>
-          </div>
+          <p>{year}</p>
+          <p>{type}</p>
+          <p>{stars}</p>
+          <p>{genres}</p>
+          <p>{plot}</p>
+          <p>{countries}</p>
         </Typography>
         <Typography variant="caption">{id}</Typography>
       </Grid>

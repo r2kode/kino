@@ -9,7 +9,10 @@ export function Layout() {
     <>
       {/* <CssBaseline /> */}
       <Header />
-      <Container maxWidth="sm" sx={{ bgcolor: '#242424', pt: 4 }}>
+      <Container
+        maxWidth="sm"
+        sx={{ bgcolor: '#242424', color: '#fff', pt: 4 }}
+      >
         <Box sx={{ height: '100vh' }}>
           <Outlet />
         </Box>
