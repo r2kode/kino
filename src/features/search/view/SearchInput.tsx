@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, SyntheticEvent } from 'react';
 import { Box, InputBase, IconButton } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -7,7 +7,12 @@ type SearchInputProps = {
 };
 
 export function SearchInput({ handleSearch }: SearchInputProps) {
-  const [searchInput, setSearchInput] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearchSubmit = (e: SyntheticEvent) => {
+    e.preventDefault();
+    handleSearch(searchQuery);
+  };
 
   return (
     <Box
@@ -24,13 +29,13 @@ export function SearchInput({ handleSearch }: SearchInputProps) {
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search Movie Title"
         inputProps={{ 'aria-label': 'search movie title' }}
-        onChange={(e) => setSearchInput(e.target.value)}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
       <IconButton
-        type="button"
+        type="submit"
         sx={{ p: '10px' }}
         aria-label="search"
-        onClick={() => handleSearch(searchInput)}
+        onClick={handleSearchSubmit}
       >
         <SearchIcon />
       </IconButton>
