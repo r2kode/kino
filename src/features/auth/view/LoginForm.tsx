@@ -1,7 +1,11 @@
 import { Box, Button } from '@mui/material';
 import { InputField } from '@/components/form/InputField';
+import { useLoginForm } from '../hooks/useLoginForm';
 
 export function LoginForm() {
+  const { handleUsernameChange, handlePasswordChange, handleLoginFormSubmit } =
+    useLoginForm();
+
   return (
     <Box
       component="form"
@@ -14,14 +18,21 @@ export function LoginForm() {
       }}
       autoComplete="off"
     >
-      <InputField id="email" label="Email" />
-      <InputField id="password" label="Password" type="password" />
+      <InputField id="email" label="Email" onChange={handleUsernameChange} />
+      <InputField
+        id="password"
+        label="Password"
+        type="password"
+        onChange={handlePasswordChange}
+      />
       <Button
         variant="contained"
         size="large"
         sx={{ width: '20ch', mx: 'auto', mt: 2 }}
+        type="submit"
+        onClick={handleLoginFormSubmit}
       >
-        Login
+        Sign In
       </Button>
     </Box>
   );

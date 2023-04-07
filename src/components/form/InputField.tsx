@@ -1,11 +1,5 @@
-import { TextField } from '@mui/material';
+import { TextField, TextFieldProps } from '@mui/material';
 
-type InputFieldProps = {
-  id: string;
-  label: string;
-  type?: string;
-};
-
-export function InputField(props: InputFieldProps) {
+export function InputField(props: TextFieldProps) {
   return <TextField variant="outlined" fullWidth margin="normal" {...props} />;
 }
