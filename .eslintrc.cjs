@@ -27,6 +27,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
+    'no-console': 'warn',
     'space-before-function-paren': [
       'warn',
       {
