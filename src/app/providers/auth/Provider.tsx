@@ -1,10 +1,6 @@
 import { useReducer, createContext, ReactNode, Dispatch } from 'react';
-import {
-  initialState,
-  authReducer,
-  AuthActionTypes,
-  AuthState,
-} from './context';
+import { AuthState } from './types';
+import { initialState, authReducer, AuthActionTypes } from './context';
 
 type AuthProviderProps = {
   children: ReactNode;
