@@ -13,11 +13,19 @@ export const useAuth = () => {
   const { isAuthenticated, error } = authState;
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
-      dispatch({ type: AuthActions.SET_AUTH_SESSION, payload: { session } });
+      const isAuthenticated = !!session?.user?.aud;
+      dispatch({
+        type: AuthActions.SET_AUTH_SESSION,
+        payload: { isAuthenticated, session },
+      });
     });
 
     supabase.auth.onAuthStateChange((_event, session) => {
-      dispatch({ type: AuthActions.SET_AUTH_SESSION, payload: { session } });
+      const isAuthenticated = !!session?.user?.aud;
+      dispatch({
+        type: AuthActions.SET_AUTH_SESSION,
+        payload: { isAuthenticated, session },
+      });
     });
   }, []);
 

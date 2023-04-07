@@ -4,18 +4,23 @@ import { App } from '@/pages/App';
 import { Details } from '@/pages/Details';
 import { Collection } from '@/pages/Collection';
 import { Login } from '@/pages/Login';
+import { AuthRoute } from '@/features/auth';
 
 export enum RoutePaths {
-  COLLECTION = 'collection',
-  DETAILS = 'details',
-  LOGIN = 'login',
+  COLLECTION = '/collection',
+  DETAILS = '/details',
+  LOGIN = '/login',
 }
 
 const routes = [
   { element: <App />, index: true },
   { element: <Details />, path: `${RoutePaths.DETAILS}/:id` },
   {
-    element: <Collection />,
+    element: (
+      <AuthRoute>
+        <Collection />
+      </AuthRoute>
+    ),
     path: RoutePaths.COLLECTION,
     label: 'Collection',
     navItem: true,
