@@ -1,8 +1,7 @@
-import { AppBar, Toolbar, Container, Typography } from '@mui/material';
-import { NavLink } from 'react-router-dom';
-import { RoutePaths } from '@/router';
+import { AppBar, Toolbar, Container } from '@mui/material';
 import { DesktopMenu } from './DesktopMenu';
 import { MobileMenu } from './MobileMenu';
+import { AuthMenu } from './AuthMenu';
 import { Logo } from './Logo';
 
 export function Header() {
@@ -14,21 +13,7 @@ export function Header() {
           <MobileMenu />
           <Logo pageName="Kino" variant="mobile" />
           <DesktopMenu />
-          <NavLink
-            to={RoutePaths.LOGIN}
-            style={{
-              color: '#fff',
-              textDecoration: 'none',
-            }}
-          >
-            <Typography
-              textAlign="center"
-              fontWeight="bold"
-              sx={{ p: 1, mx: 2 }}
-            >
-              Login
-            </Typography>
-          </NavLink>
+          <AuthMenu />
         </Toolbar>
       </Container>
     </AppBar>

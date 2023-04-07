@@ -19,6 +19,7 @@
     "@mui/icons-material": "^5.11.11",
     "@mui/material": "^5.11.13",
     "@reduxjs/toolkit": "^1.9.3",
+    "@supabase/supabase-js": "2.14.0",
     "@types/mui-image": "^1.0.1",
     "mui-image": "^1.0.7",
     "react": "18.2.0",
