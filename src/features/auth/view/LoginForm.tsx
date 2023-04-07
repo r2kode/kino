@@ -3,8 +3,13 @@ import { InputField } from '@/components/form/InputField';
 import { useLoginForm } from '../hooks/useLoginForm';
 
 export function LoginForm() {
-  const { handleUsernameChange, handlePasswordChange, handleLoginFormSubmit } =
-    useLoginForm();
+  const {
+    credentials: { username, password },
+    error,
+    handleUsernameChange,
+    handlePasswordChange,
+    handleLoginFormSubmit,
+  } = useLoginForm();
 
   return (
     <Box
@@ -18,12 +23,22 @@ export function LoginForm() {
       }}
       autoComplete="off"
     >
-      <InputField id="email" label="Email" onChange={handleUsernameChange} />
+      <InputField
+        id="email"
+        label="Email"
+        value={username}
+        onChange={handleUsernameChange}
+        error={!!error?.message}
+        helperText={error?.message}
+      />
       <InputField
         id="password"
         label="Password"
         type="password"
+        value={password}
         onChange={handlePasswordChange}
+        error={!!error?.message}
+        helperText={error?.message}
       />
       <Button
         variant="contained"

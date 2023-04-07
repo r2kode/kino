@@ -1,13 +1,8 @@
+import { AuthState } from './types';
+
 export enum AuthActions {
   SET_AUTH_SESSION = 'SET_AUTH_SESSION',
 }
-
-// TODO: improve typings
-export type AuthState = {
-  isAuthenticated?: boolean;
-  error?: unknown;
-  session?: unknown;
-};
 
 export type AuthActionTypes = {
   type: keyof typeof AuthActions;
