@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Box, Typography, List, ListItem, ListItemText } from '@mui/material';
 import { useSearchMovieQuery } from '@/app/services/movies';
 import { Movie, MovieResponse } from '@/types/movie';
-import { RoutePaths } from '@/router';
+import { RoutePaths } from '@/app/providers/router';
 
 type SearchResultsProps = {
   searchPhrase: string;

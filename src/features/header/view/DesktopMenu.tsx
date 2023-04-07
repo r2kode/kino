@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Box, Typography } from '@mui/material';
-import { navItems } from '@/router';
+import { navItems } from '@/app/providers/router';
 
 export function DesktopMenu() {
   return (

@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import { Typography, Button } from '@mui/material';
-import { RoutePaths } from '@/router';
+import { RoutePaths } from '@/app/providers/router';
 import { useAuth } from '@/app/providers/auth/useAuth';
 
 export function AuthMenu() {

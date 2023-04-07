@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { Box, IconButton, Menu, MenuItem, Typography } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
-import { navItems } from '@/router';
+import { navItems } from '@/app/providers/router';
 import { useMobileMenu } from '../hooks/useMobileMenu';
 
 export function MobileMenu() {

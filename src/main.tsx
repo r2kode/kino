@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { ApiProvider } from '@reduxjs/toolkit/query/react';
 import { RouterProvider } from 'react-router-dom';
-import { router } from './router';
+import { router } from './app/providers/router';
 import { AuthProvider } from './app/providers/auth/Provider';
 import { moviesApi } from './app/services/movies';
 import './index.css';

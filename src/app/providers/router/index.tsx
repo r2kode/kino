@@ -1,9 +1,9 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { Layout } from './pages/Layout';
+import { Layout } from '@/pages/Layout';
 import { App } from '@/pages/App';
-import { Details } from './pages/Details';
-import { Collection } from './pages/Collection';
-import { Login } from './pages/Login';
+import { Details } from '@/pages/Details';
+import { Collection } from '@/pages/Collection';
+import { Login } from '@/pages/Login';
 
 export enum RoutePaths {
   COLLECTION = 'collection',
