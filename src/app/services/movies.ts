@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { MovieResponse } from '@/types/movie';
+import { MovieSearchResponse } from '@/types/movie';
 
 const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 const API_KEY = import.meta.env.VITE_IMDB_API_KEY;
@@ -8,7 +8,7 @@ export const moviesApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: VITE_BASE_URL }),
   tagTypes: ['Movie'],
   endpoints: (build) => ({
-    searchMovie: build.query<MovieResponse, string>({
+    searchMovie: build.query<MovieSearchResponse, string>({
       query: (title) => `Search/${API_KEY}/${title}`,
       providesTags: (resData) =>
         resData?.results

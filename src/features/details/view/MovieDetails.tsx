@@ -4,11 +4,9 @@ import Grid from '@mui/material/Unstable_Grid2';
 import { Image } from 'mui-image';
 import { useGetMovieDetailsQuery } from '@/app/services/movies';
 import { useMovieDetails } from '../hooks/useMovieDetails';
-// import { Movie } from '@/types';
 
 type MovieDetailsProps = {
   id: string;
-  // id: Pick<Movie, 'id'>;
 };
 
 export function MovieDetails({ id }: MovieDetailsProps) {
