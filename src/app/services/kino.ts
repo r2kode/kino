@@ -13,15 +13,16 @@ export const kinoApi = createApi({
       return headers;
     },
   }),
-  // tagTypes: ['Collection'],
+  tagTypes: ['Collection'],
   endpoints: (build) => ({
-    // addCollectionMovie: build.mutation({
-    //   query: (newCollectionItem) => ({
-    //     url: '',
-    //     method: 'POST',
-    //     body: newCollectionItem,
-    //   }),
-    // }),
+    addCollectionMovie: build.mutation({
+      query: (newCollectionItem) => ({
+        url: '',
+        method: 'POST',
+        body: newCollectionItem,
+      }),
+      // invalidatesTags: [{ type: 'Collection', id: 'LIST' }],
+    }),
     getCollectionMovie: build.query({
       query: (ttid) => `${ttid}`,
       // providesTags: (ttid) => [{ type: 'Collection', ttid }],
@@ -34,7 +35,7 @@ export const kinoApi = createApi({
 });
 
 export const {
-  // useAddCollectionMovieMutation,
+  useAddCollectionMovieMutation,
   useGetCollectionMovieQuery,
   useGetCollectionQuery,
 } = kinoApi;

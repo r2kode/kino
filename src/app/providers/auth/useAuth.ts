@@ -10,7 +10,8 @@ export function useAuthContext() {
 
 export const useAuth = () => {
   const { authState, dispatch } = useAuthContext();
-  const { isAuthenticated, error } = authState;
+  const { session, isAuthenticated, error } = authState;
+
   useEffect(() => {
     supabase.auth.getSession().then(({ data: { session } }) => {
       const isAuthenticated = !!session?.user?.aud;
@@ -53,5 +54,5 @@ export const useAuth = () => {
     });
   };
 
-  return { authState, isAuthenticated, error, signIn, signOut };
+  return { authState, session, isAuthenticated, error, signIn, signOut };
 };
