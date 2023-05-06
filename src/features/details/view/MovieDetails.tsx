@@ -1,9 +1,8 @@
-import { Box, IconButton, Stack, Typography } from '@mui/material';
-import VideoLibraryIcon from '@mui/icons-material/VideoLibrary';
+import { Box, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Image } from 'mui-image';
-import { useGetMovieDetailsQuery } from '@/app/services/movies';
-import { useMovieDetails } from '../hooks/useMovieDetails';
+import { useGetMovieDetailsQuery } from '@/app/services/imdb';
+import { AddToCollectionBtn } from './AddToCollectionBtn';
 
 type MovieDetailsProps = {
   id: string;
@@ -11,7 +10,6 @@ type MovieDetailsProps = {
 
 export function MovieDetails({ id }: MovieDetailsProps) {
   const { data, isLoading } = useGetMovieDetailsQuery(id);
-  const { addToCollection } = useMovieDetails(id);
 
   if (isLoading) return <h3>Loading...</h3>;
 
@@ -30,14 +28,7 @@ export function MovieDetails({ id }: MovieDetailsProps) {
       <Grid md={7}>
         <Box mb={2}>
           <Stack direction="row" spacing={1}>
-            <IconButton
-              aria-label="add to collection"
-              size="large"
-              color="secondary"
-              onClick={addToCollection}
-            >
-              <VideoLibraryIcon fontSize="inherit" />
-            </IconButton>
+            <AddToCollectionBtn movieDetails={data} />
           </Stack>
         </Box>
         <Box>
