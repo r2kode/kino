@@ -1,5 +1,5 @@
 import { Box, Typography, List } from '@mui/material';
-import { useSearchMovieQuery } from '@/app/services/movies';
+import { useSearchMovieQuery } from '@/app/services/imdb';
 import { MovieSearchResult, MovieSearchResponse } from '@/types/movie';
 import { SearchResultsItem } from './SearchResultsItem';
 
