@@ -10,7 +10,7 @@ export function Layout() {
       <CssBaseline />
       <Header />
       <Container maxWidth="sm" sx={{ pt: 4 }}>
-        <Box sx={{ height: '100vh' }}>
+        <Box sx={{ minHeight: '100vh' }}>
           <Outlet />
         </Box>
         <footer>

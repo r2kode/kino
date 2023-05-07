@@ -1,20 +1,23 @@
-import { Image } from 'mui-image';
-import { useGetMovieDetailsQuery } from '@/app/services/movies';
+import { Box, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
-import Typography from '@mui/material/Typography';
-// import { Movie } from '@/types';
+import { Image } from 'mui-image';
+import { useGetMovieDetailsQuery } from '@/app/services/imdb';
+import { useGetCollectionMovieQuery } from '@/app/services/kino';
+import { AddToCollectionBtn } from './AddToCollectionBtn';
 
 type MovieDetailsProps = {
   id: string;
-  // id: Pick<Movie, 'id'>;
 };
 
 export function MovieDetails({ id }: MovieDetailsProps) {
   const { data, isLoading } = useGetMovieDetailsQuery(id);
+  const { data: collectionMovie, isLoading: collectionLoading } =
+    useGetCollectionMovieQuery(id);
 
   if (isLoading) return <h3>Loading...</h3>;
 
   const { title, year, stars, genres, plot, countries, type, image } = data;
+  const isInCollection = collectionMovie?.length > 0;
 
   return (
     <Grid container spacing={2}>
@@ -27,15 +30,35 @@ export function MovieDetails({ id }: MovieDetailsProps) {
         <Image src={image} />
       </Grid>
       <Grid md={7}>
-        <Typography variant="body1">
-          <p>{year}</p>
-          <p>{type}</p>
-          <p>{stars}</p>
-          <p>{genres}</p>
-          <p>{plot}</p>
-          <p>{countries}</p>
-        </Typography>
-        <Typography variant="caption">{id}</Typography>
+        <Box mb={2}>
+          <Stack direction="row" spacing={1}>
+            <AddToCollectionBtn
+              movieDetails={data}
+              isInCollection={isInCollection}
+            />
+          </Stack>
+        </Box>
+        <Box>
+          <Typography variant="body1" mb={1}>
+            {year}
+          </Typography>
+          <Typography variant="body1" mb={1}>
+            {type}
+          </Typography>
+          <Typography variant="body1" mb={1}>
+            {stars}
+          </Typography>
+          <Typography variant="body1" mb={1}>
+            {genres}
+          </Typography>
+          <Typography variant="body1" mb={1}>
+            {plot}
+          </Typography>
+          <Typography variant="body1" mb={1}>
+            {countries}
+          </Typography>
+          <Typography variant="caption">{id}</Typography>
+        </Box>
       </Grid>
     </Grid>
   );
