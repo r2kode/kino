@@ -1,12 +1,27 @@
-import { Box, List } from '@mui/material';
-import { useGetCollectionQuery } from '@/app/services/kino';
+import { useState, ChangeEvent } from 'react';
+import { Box, List, Pagination } from '@mui/material';
+import { useGetCollectionQuery, Collection } from '@/app/services/kino';
 import type { Movie } from '@/types/movie';
 import { CollectionItem } from './CollectionItem';
 
-export function CollectionList() {
-  const { data: movies, error, isLoading } = useGetCollectionQuery();
+const PAGE_SIZE = 10;
+const DEFAULT_PAGE = 1;
 
-  if (isLoading) return <p>Loading...</p>;
+export function CollectionList() {
+  const [page, setPage] = useState(DEFAULT_PAGE);
+  const { data, error, isLoading } = useGetCollectionQuery({
+    page,
+    pageSize: PAGE_SIZE,
+  });
+
+  if (isLoading && !data) return <p>Loading...</p>;
+
+  const { movies, collectionCount } = data as Collection;
+  const paginationSize = Math.ceil(collectionCount / PAGE_SIZE);
+
+  const handleChange = (event: ChangeEvent<unknown>, value: number) => {
+    setPage(value);
+  };
 
   return (
     <Box>
@@ -16,6 +31,13 @@ export function CollectionList() {
           return <CollectionItem key={ttid} movieItem={movie} />;
         })}
       </List>
+      <Box sx={{ mt: 2, mb: 4, display: 'flex', justifyContent: 'center' }}>
+        <Pagination
+          count={paginationSize}
+          page={page}
+          onChange={handleChange}
+        />
+      </Box>
     </Box>
   );
 }
