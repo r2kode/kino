@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import type { Movie } from '@/types/movie';
 
 const KINO_COLLECTION_API = import.meta.env.VITE_KINO_COLLECTION_API;
 const API_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
@@ -21,15 +22,21 @@ export const kinoApi = createApi({
         method: 'POST',
         body: newCollectionItem,
       }),
-      // invalidatesTags: [{ type: 'Collection', id: 'LIST' }],
+      invalidatesTags: (_, __, { ttid }) => [
+        { type: 'Collection', ttid },
+        { type: 'Collection', id: 'LIST' },
+      ],
     }),
     getCollectionMovie: build.query({
-      query: (ttid) => `${ttid}`,
-      // providesTags: (ttid) => [{ type: 'Collection', ttid }],
+      query: (ttid) => `?ttid=eq.${ttid}&select=ttid`,
+      providesTags: (_res, _err, ttid) => [{ type: 'Collection', ttid }],
     }),
-    getCollection: build.query({
+    getCollection: build.query<Movie[], void>({
       query: () => `?select=*`,
-      // providesTags: (ttid) => [{ type: 'Collection', ttid }],
+      providesTags: (result = []) => [
+        ...result.map(({ ttid }) => ({ type: 'Collection', ttid } as const)),
+        { type: 'Collection' as const, id: 'LIST' },
+      ],
     }),
   }),
 });

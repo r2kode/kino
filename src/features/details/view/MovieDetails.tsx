@@ -2,6 +2,7 @@ import { Box, Stack, Typography } from '@mui/material';
 import Grid from '@mui/material/Unstable_Grid2';
 import { Image } from 'mui-image';
 import { useGetMovieDetailsQuery } from '@/app/services/imdb';
+import { useGetCollectionMovieQuery } from '@/app/services/kino';
 import { AddToCollectionBtn } from './AddToCollectionBtn';
 
 type MovieDetailsProps = {
@@ -10,10 +11,13 @@ type MovieDetailsProps = {
 
 export function MovieDetails({ id }: MovieDetailsProps) {
   const { data, isLoading } = useGetMovieDetailsQuery(id);
+  const { data: collectionMovie, isLoading: collectionLoading } =
+    useGetCollectionMovieQuery(id);
 
   if (isLoading) return <h3>Loading...</h3>;
 
   const { title, year, stars, genres, plot, countries, type, image } = data;
+  const isInCollection = collectionMovie?.length > 0;
 
   return (
     <Grid container spacing={2}>
@@ -28,7 +32,10 @@ export function MovieDetails({ id }: MovieDetailsProps) {
       <Grid md={7}>
         <Box mb={2}>
           <Stack direction="row" spacing={1}>
-            <AddToCollectionBtn movieDetails={data} />
+            <AddToCollectionBtn
+              movieDetails={data}
+              isInCollection={isInCollection}
+            />
           </Stack>
         </Box>
         <Box>

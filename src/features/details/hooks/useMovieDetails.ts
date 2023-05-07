@@ -7,12 +7,16 @@ export const useMovieDetails = () => {
   const { session } = useAuth();
 
   const addToCollection = (movie: Movie) => {
-    const { id, title, stars } = movie;
+    const { id, title, year, genres, type, image, stars } = movie;
     addCollectionMovie({
       ttid: id,
       uid: session?.user?.id,
       title,
-      notes: stars,
+      year,
+      genres,
+      type,
+      image,
+      stars,
     });
   };
 

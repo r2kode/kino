@@ -5,9 +5,13 @@ import { Movie } from '@/types/movie';
 
 type AddToCollectionProps = {
   movieDetails: Movie;
+  isInCollection: boolean;
 };
 
-export function AddToCollectionBtn({ movieDetails }: AddToCollectionProps) {
+export function AddToCollectionBtn({
+  movieDetails,
+  isInCollection = false,
+}: AddToCollectionProps) {
   const { title } = movieDetails;
   const { addToCollection } = useMovieDetails();
   const handleAddToCollection = () => {
@@ -20,6 +24,7 @@ export function AddToCollectionBtn({ movieDetails }: AddToCollectionProps) {
       size="large"
       color="secondary"
       onClick={handleAddToCollection}
+      disabled={isInCollection}
     >
       <VideoLibraryIcon fontSize="inherit" />
     </IconButton>
