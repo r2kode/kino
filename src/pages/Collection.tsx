@@ -1,3 +1,10 @@
+import { Box } from '@mui/material';
+import { CollectionList } from '@/features/collection';
+
 export function Collection() {
-  return <div>Collection</div>;
+  return (
+    <Box>
+      <CollectionList />
+    </Box>
+  );
 }
